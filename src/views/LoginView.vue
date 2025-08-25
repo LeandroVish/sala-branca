@@ -15,13 +15,25 @@
         </div>
         <div class="mb-6">
           <label for="senha" class="block text-sm font-medium mb-1">Senha</label>
-          <input
-            id="senha"
-            type="password"
-            v-model="senha"
-            class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-black"
-            required
-          />
+          <div class="relative">
+            <input
+              :type="mostrarSenha ? 'text' : 'password'"
+              id="senha"
+              v-model="senha"
+              class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-black pr-10"
+              required
+            />
+            <button
+              type="button"
+              @click="mostrarSenha = !mostrarSenha"
+              class="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 focus:outline-none"
+              tabindex="-1"
+              aria-label="Mostrar ou ocultar senha"
+            >
+              <span v-if="mostrarSenha">🙈</span>
+              <span v-else>👁️</span>
+            </button>
+          </div>
         </div>
         <button
           type="submit"
@@ -50,7 +62,8 @@ export default {
       username: '',
       senha: '',
       carregando: false,
-      erroMsg: ''
+      erroMsg: '',
+      mostrarSenha: false // Novo estado para mostrar/ocultar senha
     };
   },
   methods: {

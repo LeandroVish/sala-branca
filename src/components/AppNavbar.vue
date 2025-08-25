@@ -43,6 +43,14 @@
         v-if="menuAtivo"
         class="md:hidden fixed top-0 right-0 h-full w-64 bg-white shadow-xl z-50 px-6 pt-20"
       >
+        <!-- Botão X para fechar o menu -->
+        <button
+          @click="menuAtivo = false"
+          class="absolute top-4 right-4 text-2xl text-gray-700 focus:outline-none"
+          aria-label="Fechar menu"
+        >
+          &times;
+        </button>
         <ul class="flex flex-col space-y-6">
           <li><router-link @click.native="menuAtivo = false" to="/">Sala Branca</router-link></li>
           <li><router-link @click.native="menuAtivo = false" to="/tarefas">Tarefas</router-link></li>
